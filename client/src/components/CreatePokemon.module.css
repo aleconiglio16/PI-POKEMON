@@ -1,0 +1,10 @@
+.create{
+    text-align: left;
+    margin-left: 40px;
+}
+
+.label{
+    display: block;
+    float: left;
+    width: 70px;
+}

@@ -1,0 +1,23 @@
+.landing{
+    text-align: left;
+    margin-left: 60px;
+  
+  
+}
+
+.image{
+    background-image: url(https://cdn.wallpapersafari.com/24/40/SxvmuD.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    min-height: 100vh;
+
+}
+
+.title{
+    color: antiquewhite;
+    font-family: 'Gill Sans';
+    margin-left: 145px;
+    
+}

@@ -1,0 +1,14 @@
+.card{
+    
+    margin-top: 10px;
+    margin-left: 500px;
+    margin-right: 500px;
+    text-shadow: 0 0 10px rgb(24, 226, 24), 0 0 20px #fff;
+    color:white;
+
+}
+
+.card:hover{
+    opacity: 0.7;
+    box-shadow: 0 0 10px rgb(24, 226, 24), 0 0 20px #fff;
+}
