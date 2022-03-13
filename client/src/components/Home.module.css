@@ -1,7 +1,102 @@
-.home{
+.general{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk8GlfD9LTGCnNJvQOoAhrzeiCCBqZJ7TL9w&usqp=CAU);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title{
     text-align: center;
-    background-color: black;
-    color: greenyellow;
+    filter: drop-shadow(7px 8px 5px rgba(0, 0, 0, 0.7));
+}
+
+.createReload{
+    text-align: center;
     
+    justify-content: space-evenly;
+    align-items: center;   
     
+}
+
+.search{
+    text-align: center;
+    position: relative;
+    border: none;
+    cursor:pointer;
+    
+}
+
+.filters{
+    text-align: center;
+    align-items: center;
+}
+
+.paginado{
+    text-align: center;
+}
+
+
+.grid{
+    text-align: center;
+    display: grid;
+    row-gap: 50px;
+    background-repeat:  no-repeat;
+    background-position: top;
+    background-size: cover;
+    grid-template-columns: auto auto auto;
+    margin-left: 80px;
+    padding: 10px;
+}
+
+.selectores{
+    text-align: center;
+    border-radius: 10px;
+    width: 180px;
+    height: 40px;
+    font-size: 0.8rem;
+    background-color: red;
+    color: white;
+    border: 1px solid black;
+    box-shadow: 9px 7px 9px rgba(0, 0, 0, 0.637);
+    font-size: large;
+    cursor:pointer;
+}
+.selectores:hover{
+    background-color: rgb(158, 14, 14);
+}
+
+.crear{
+    
+    border-radius: 10px;
+    width: 180px;
+    height: 40px;
+    font-size: 0.8rem;
+    background-color: red;
+    color: white;
+    border: 1px solid black;
+    box-shadow: 9px 7px 9px rgba(0, 0, 0, 0.637);
+    float: left;
+    margin-top: 10px;
+    font-size: large;
+    cursor:pointer;
+}
+.crear:hover{
+    background-color: rgb(158, 14, 14);
+}
+
+.recargar{
+    float: right;
+    border-radius: 10px;
+    width: 180px;
+    height: 40px;
+    font-size: 0.8rem;
+    background-color: red;
+    color: white;
+    border: 1px solid black;
+    box-shadow: 9px 7px 9px rgba(0, 0, 0, 0.637);
+    margin-top: 10px;
+    font-size: large;
+    cursor:pointer;
+}
+.recargar:hover{
+    background-color: rgb(158, 14, 14);
 }

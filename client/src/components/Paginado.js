@@ -1,5 +1,5 @@
 import React from "react";
-
+import style from "./Paginado.module.css"
 
 //declaro el paginado trayendo las propiedades del otro componente 
 export default function Paginado({pokemonperPage, allPokemons, paginado}) {
@@ -22,7 +22,7 @@ export default function Paginado({pokemonperPage, allPokemons, paginado}) {
                 { pageNumbers && pageNumbers.map(number => (
                     
 
-                        <button onClick={() => paginado(number)} key={number}> {number} </button>
+                        <button onClick={() => paginado(number)} key={number} className={style.paginado}> {number} </button>
 
                     
                     ))

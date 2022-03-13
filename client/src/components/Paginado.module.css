@@ -1,0 +1,11 @@
+.paginado{
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    cursor:pointer;
+}
+
+.paginado:hover{
+    background-color: rgb(168, 168, 168);
+}

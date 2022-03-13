@@ -36,10 +36,10 @@ function rootReduceer (state = initialState, action) {
             }
 
         case "FILTER_TYPES":
-            const allTypes = state.typePokemon
+            const allTypes = state.pokemonCopy
             const pokeFilter = action.payload === "All" 
             ? allTypes
-            : allTypes.filter(e=> e.types === action.payload)
+            : allTypes.filter(e=> e.types.includes(action.payload))
             return {
                 ...state,
                 pokemon: pokeFilter
@@ -116,6 +116,7 @@ function rootReduceer (state = initialState, action) {
                 ...state,
                 details: action.payload
             }
+        
             default : 
                 return state
         } 

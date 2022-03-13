@@ -6,7 +6,7 @@ import style from "./LandingPage.module.css"
 export default function LandingPage() {
     return (
         <div className={style.image}>
-            <h1 className={style.title}><strong>INGRESAR</strong></h1>
+            
             <div className={style.landing}>
 
                 <Link to ="/home">
@@ -14,7 +14,7 @@ export default function LandingPage() {
                     <img src="https://www.freeiconspng.com/thumbs/pokemon-png/pokemon-png-23.png" alt="fondo"/>
                 
                 </Link>
-               
+                <h1 className={style.title}><strong>INGRESAR</strong></h1>   
             </div>
         </div>
     )

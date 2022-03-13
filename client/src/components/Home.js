@@ -7,6 +7,7 @@ import { Card } from "./Card";
 import Paginado from "./Paginado";
 import style from "./Home.module.css"
 import SearchBar from "./SearchBar";
+import Titulo from "../imagenes/titulo.png"
 
 
 export default function Home () {
@@ -67,62 +68,85 @@ function handleOrderByAttack (e) {
     setOrder(e.target.value)
 }
 
+function handleTypesFilter(e) {
+    e.preventDefault();
+    dispatch(filterTypes(e.target.value))
+    setCurrentPage(1);
+}
+
 return(
-    <div className={style.home}>
-        <Link to="/create">Crear Pokemon</Link>
-        <h1> POKEMON API </h1>
-        <button onClick={e => handleClick(e)}>
-           Recargar personajes
-        </button>
-        <br/>
-        <SearchBar/>
-        <br/>
-                <select onChange={e => handleFilterPokemon(e)}>
-                    <option value="All">Todos</option>
-                    <option value="api">Existente</option>
-                    <option value="created">Creado</option>
-                </select>
-                <select onChange={e => handleOrderByName(e)}>  
-                    <option value="All">Nombre Pokemon</option>
-                    <option value= "asc">A - Z</option>
-                    <option value= "desc">Z - A</option>
-                </select>
-                <select onChange={e=> handleOrderByAttack(e)}>
-                    <option value="All">Ordenamiento de Fuerza</option>
-                    <option value="weak">Debil a Fuerte</option>
-                    <option value="strong">Fuerte a Debil</option>
-                </select>
-                <select>
-                        <option>Tipos</option>
-                    {typesOfPokemon.map((t)=> (
-                        <option value={t.name} key={t.id}>{t.name}</option>
-                    ))}
-                </select>
+    
+    <div className={style.general}>   
+            <div className={style.title}>
+                <img src={Titulo} alt="titulo"/>
+              </div> 
+            <div className={style.createReload}>
+                <Link to="/create">
+                   <button className={style.crear}>Crear Pokemon</button>  
+                </Link>
+           
+                <button onClick={e => handleClick(e)} className={style.recargar}>
+                Recargar 
+                </button>
+            </div>
+            <br/>
+           
+            <br/>
+            <div className={style.search}>
+                <SearchBar/>
+            </div>
+            <br/>
+            <br/>
+                <div className={style.filters}>
+                    <select onChange={e => handleFilterPokemon(e)}  className={style.selectores}>
+                        <option value="All">Todos</option>
+                        <option value="api">Existente</option>
+                        <option value="created">Creado</option>
+                    </select>
+                    <select onChange={e => handleOrderByName(e)} className={style.selectores}>  
+                        <option value="All">Nombre</option>
+                        <option value= "asc">A - Z</option>
+                        <option value= "desc">Z - A</option>
+                    </select>
+                    <select onChange={e=> handleOrderByAttack(e)} className={style.selectores}>
+                        <option value="All">Fuerza</option>
+                        <option value="weak">Debil a Fuerte</option>
+                        <option value="strong">Fuerte a Debil</option>
+                    </select>
+                    <select onChange={e => handleTypesFilter(e)} className={style.selectores}>
+                            <option value="All">Tipos</option>
+                        {typesOfPokemon.map((t)=> (
+                            <option value={t.name} key={t.id}>{t.name}</option>
+                        ))}
+                    </select>
+                </div>
+                <br/>
+                <div className={style.paginado}>
+                    <Paginado 
+                        pokemonperPage={pokemonPerPage}
+                        allPokemons={allPokemons.length} // se le pasa asi xq necesitamos un valor numerico
+                        paginado={paginado}
+                        />
+                    <br/>
 
-{/* al paginado se lo pasa con sus props */} 
-
-    <Paginado 
-        pokemonperPage={pokemonPerPage}
-        allPokemons={allPokemons.length} // se le pasa asi xq necesitamos un valor numerico
-        paginado={paginado}
-        />
-
-     {
-         currentPokemons?.map((e)=>{
-             return (
-                   
-                    <Card 
-                    name={e.name} 
-                    urlImage={e.urlImage} 
-                    types={e.types} 
-                    id={e.id}
-                    key={e.name}
-                    />                      
-                   
-             )
-         })
-     }
-
+                </div>    
+                    <div className={style.grid}>
+                    {
+                        currentPokemons?.map((e)=>{
+                            return (
+                                
+                                    <Card 
+                                    name={e.name} 
+                                    urlImage={e.urlImage} 
+                                    types={e.types} 
+                                    id={e.id}
+                                    key={e.name}
+                                    />                      
+                                
+                            )
+                        })
+                    }
+                    </div>
     </div>
 )
 

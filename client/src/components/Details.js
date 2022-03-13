@@ -22,12 +22,12 @@ export default function Details(props) {
             
                     <div className={styles.detailsPokemonCard}>
                         <div className={styles.detailsHeader}>
-                            <img src={myPokemon.urlImage} alt="Img not found" width="200px" />
+                            <img src={myPokemon.urlImage} alt="Img not found" width="200px" className= {styles.image} />
                             <h1 className={styles.name}>{myPokemon.name}</h1>
                             <div className={styles.types}>
                                 {
                                     myPokemon.types?.map(e=> (
-                                        <h3 key={e}>{e}</h3>
+                                        <span key={e}><strong>{e}</strong> </span>
                                     ))
                                 }
                             </div>
@@ -45,12 +45,12 @@ export default function Details(props) {
                             <h3>ALTURA: {myPokemon.height}</h3>                        
                             <h3>PESO: {myPokemon.weight}</h3>                        
                         </div>
-                    </div> 
+                    </div > 
+                    <div className={styles.return}>
                 <Link to="/home">
                     <img src="https://cdn.atomix.vg/wp-content/uploads/2013/10/pokeball.png" atl="Boton" width="150px"/>
                 </Link>      
-
-                
+                    </div>
             </div>
         
     )

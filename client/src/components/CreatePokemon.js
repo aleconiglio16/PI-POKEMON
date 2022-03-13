@@ -6,36 +6,41 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "./CreatePokemon.module.css"
 
 
-/* function validate(input) {
+function validate(input) {
     let errors = {}
-    if(!input.name) {
-        errors.name = "El nombre es obligatorio y no debe contener numeros";
-    }  else if(!input.hp || (input.hp > 1 && input.hp < 100) || !input.hp.contains("number")){
+
+    if(!input.name || input.name.length < 6) {
+        errors.name = "El nombre es obligatorio y no debe tener mas de 6 caracteres";
+
+    }   else if(!input.hp || input.hp < 1 || input.hp > 100 ){
         errors.hp ="El hp es obligatorio, no puede contener letras y debe ser entre 0 y 100";
-    } else if(!input.speed || (input.speed > 1 && input.speed < 100) || !input.speed.contains("number")){
-        errors.speed ="La velocidad es obligatoria, no puede contener letras y debe ser entre 0 y 100";
-    } else if(!input.attack || (input.attack > 1 && input.attack < 100) || !input.attack.contains("number")){
-        errors.attack ="El ataque es obligatorio, no puede contener letras y debe ser entre 0 y 100";
-    } else if(!input.defense || (input.defense > 1 && input.defense < 100) || !input.defense.contains("number")){
-        errors.defense ="La defensa es obligatoria, no puede contener letras y debe ser entre 0 y 100";
-    } else if(!input.hp || (input.hp > 1 && input.hp < 100) || !input.hp.contains("number")){
-        errors.hp ="El hp es obligatorio, no puede contener letras y debe ser entre 0 y 100";
-    }else if(!input.weight || (input.weight > 1 && input.weight < 300 )|| !input.weight.contains("number")){
-        errors.weight ="El peso es obligatorio, no puede contener letras y debe ser entre 0 y 300";
-    }else if(!input.height || (input.height > 1 && input.height < 400) || !input.height.contains("number")){
-        errors.height ="La altura es obligatoria, no puede contener letras y debe ser entre 0 y 400";
-    }else if(input.types < 1){
-        errors.types="Se requiere como minimo un tipo"
+
+    } else if(!input.attack || input.attack < 1 || input.attack > 100 ){
+        errors.attack ="El ataque es obligatorio y debe ser entre 0 y 100";
+
+    }  else if(!input.defense || input.defense < 1 || input.defense > 100 ){
+        errors.defense ="La defensa es obligatoria y debe ser entre 0 y 100";
+
+    } else if(!input.speed || input.speed < 1 || input.speed > 100 ){
+        errors.speed ="La velocidad es obligatoria y debe ser entre 0 y 100";
+
+
+    } else if(!input.hp || input.hp < 1 || input.hp > 100 ){
+        errors.hp ="El hp es obligatorio y debe ser entre 0 y 100";
+
+    } else if(!input.weight || input.weight < 1 || input.weight > 300 ){
+        errors.weight ="El peso es obligatorio y debe ser entre 0 y 300";
+
+    } else if(!input.height || input.height < 1 || input.height > 400 ){
+        errors.height ="La altura es obligatoria y debe ser entre 0 y 400";
+
+    } else if(input.types.length < 1 || input.types.length > 2){
+        errors.types="Se requiere como minimo un tipo y un maximo de dos por Pokemon creado"
     }
     return errors;
-}; */
+};
 
-function validate (input) {
-    let errors = {}
-    if(!input.name){
-        errors.name = "Ingrese nombre"
-    } return errors;
-}
+
 
 export default function CreatePokemon(){
     const dispatch = useDispatch();
@@ -67,7 +72,7 @@ function handleChange (e) {
     })
     setErrors(validate ({
         ...input, 
-        [e.target.name] : e.targuet.value
+        [e.target.name] : e.target.value
     }))
 }
 
@@ -81,6 +86,10 @@ function handleSelect (e) {
         ...input,
         types: [...input.types, e.target.value]
     })
+   /*  setErrors(validate) ({
+        ...input,
+        types: [...input.types, e.target.value]
+    }) */
 }
 //ahora hay que crear una funcion para le sumbit o en mi caso CREAR el pokemon
 
@@ -115,107 +124,145 @@ function handleDelete(e) {
 
     useEffect(() => {
         dispatch(getTypesPokemons()); // aca no se si tengo q mapearlo
-    }, [dispatch])
+    }, [dispatch])/*  */
 
     
     return (
 
         <div className={style.create}>
-            {/* todo lo que envuelvo en un link me  funcion como boton, pudo poner una imagen si quiero */}
-            <Link to="/home"><button>VOLVER</button></Link> 
-            <h1>Crea tu propio POKEMON!</h1>
-            <form onSubmit={e=> handleCreate(e)}>
-                <div>
-                     <label className={style.label} >Nombre: </label>
+            <div className={style.title}>
+                <h1>Crea tu propio POKEMON!</h1>
+            </div>
+            <form onSubmit={e=> handleCreate(e)} className={style.form}>
+                <div >
+                     <label className={style.label} > </label>
                      <input
                      type="text"
+                     placeholder="Introducir Nombre"
                      value={input.name}
                      name="name"
                      onChange={e =>handleChange(e)}
-                     />                
+                     />    
+                     {
+                         errors.name && <h4>{errors.name}</h4> 
+                     }
+
                 </div>
                 <div>
-                     <label className={style.label}>Hp: </label>
+                     <label className={style.label}> </label>
                      <input
-                     type="text"
+                     type="number"
+                     placeholder="Introducir Hp"
                      value={input.hp}
                      name="hp"
                      onChange={e =>handleChange(e)}
                      />
+                       {
+                         errors.hp && <h4>{errors.hp}</h4> 
+                       }
                 </div>
                 <div>
-                     <label className={style.label}>Ataque: </label>
+                     <label className={style.label}> </label>
                      <input
-                     type="text"
+                     type="number"
+                     placeholder="Introducir Ataque"
                      value={input.attack}
                      name="attack"
                      onChange={e =>handleChange(e)}
                      />
+                       {
+                         errors.attack && <h4>{errors.attack}</h4> 
+                       }
                 </div>
                 <div>
-                     <label className={style.label}>Defensa: </label>
+                     <label className={style.label}> </label>
                      <input
-                     type="text"
+                     type="number"
+                     placeholder="Introducir Defensa"
                      value={input.defense}
                      name="defense"
                      onChange={e =>handleChange(e)}
                      />
+                       {
+                         errors.defense && <h4>{errors.defense}</h4> 
+                       }
                 </div>
                 <div>
-                     <label className={style.label}>Velocidad: </label>
+                     <label className={style.label}> </label>
                      <input
-                     type="text"
+                     type="number"
+                     placeholder="Introducir Velocidad"
                      value={input.speed}
                      name="speed"
                      onChange={e =>handleChange(e)}
                      />
+                       {
+                         errors.speed && <h4>{errors.speed}</h4> 
+                       }
                 </div>
                 <div>
-                     <label className={style.label}>Altura: </label>
+                     <label className={style.label}> </label>
                      <input
-                     type="text"
+                     type="number"
+                     placeholder="Introducir Altura"
                      value={input.height}
                      name="height"
                      onChange={e =>handleChange(e)}
                      />
+                       {
+                         errors.height && <h4>{errors.height}</h4> 
+                       }
                 </div>
                 <div>
-                     <label className={style.label}>Peso: </label>
+                     <label className={style.label}> </label>
                      <input
-                     type="text"
+                     type="number"
+                     placeholder="Introducir Peso"
                      value={input.weight}
                      name="weight"
                      onChange={e =>handleChange(e)}
-                     />                
+                     />  
+                       {
+                         errors.weight && <h4>{errors.weight}</h4> 
+                       }              
                 </div>
                 <div>
-                     <label className={style.label}>Imagen: </label>
+                     <label className={style.label}> </label>
                      <input 
                      type="text"
+                     placeholder="Introducir Imagen"
                      value={input.urlImage}
                      name="urlImage"
                      onChange={e =>handleChange(e)}
                      />
+                     
                     
                 </div>
                 <select onChange={e=> handleSelect(e)}>
                     {typesPoke.map((t)=> (
                         <option value={t.name} key={t.id}>{t.name}</option>
                     ))}
+                      
                 </select>
          {/* en mi estado local q voy a tener todos los tipos, los voy a mapear, renderizando un parrafo
             con el elemento que mapeo y un boton que cuandto yo le haga click ejecute el handle */}
                 {input.types.map(dl => 
-                <div >
+                <div className={style.select}>
                     <p>{dl}</p>
-                    <button onClick={() => handleDelete(dl)}>x</button>
-                    </div>
+                    <button onClick={() => handleDelete(dl)} className={style.tipo}>x</button>
+                </div>
                 )}
-                <br/>               
+                <br/> 
+                <br/>
+                <br/>              
                 <button type="submit">CREAR</button>
 
             </form>
-            
+            <div className={style.volver}>
+                <Link to="/home">
+                    <button className={style.botonVolver}>VOLVER</button>
+                </Link> 
+            </div>
          
                 
         </div>
