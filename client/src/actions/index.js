@@ -4,8 +4,8 @@ import axios from "axios";
 
 export function getPokemons() {
     return async function(dispatch){
-        var json = await axios.get("http://localhost:3001/");
-
+        var json = await axios.get("/");
+/* http://localhost:3001 */
         return dispatch({
             type: "GET_POKEMONS",
             payload: json.data
@@ -19,7 +19,8 @@ export function getPokemons() {
 export function getNamePokemon(name) {
     return async function(dispatch) {
         try{
-        var json = await axios.get("http://localhost:3001/?name=" + name);
+        var json = await axios.get("/?name=" + name);
+        /* http://localhost:3001 */
         return dispatch ({
             type: "GET_NAME_POKEMON",
             payload: json.data
@@ -62,8 +63,8 @@ export function orderByAttack(payload) {
 
 export function getTypesPokemons() {
     return async function(dispatch){
-        var typesData = await axios.get("http://localhost:3001/types");
-
+        var typesData = await axios.get("/types");
+/* http://localhost:3001 */
         return dispatch({
             type: "GET_TYPES_POKEMONS",
             payload: typesData.data
@@ -79,14 +80,15 @@ export function filterTypes(payload) {
         type: "FILTER_TYPES",
         payload
     }
-}
+} 
 //--------------------------------------------------------------------------------------//
 
 //POST PARA CREAR POKEMONES NUEVOS
 
 export function postPokemon(payload) {
     return async function (dispatch){
-        const json = await axios.post("http://localhost:3001/", payload);
+        const json = await axios.post("/", payload);
+        /* http://localhost:3001 */
         return json;
     }
 }
@@ -98,7 +100,8 @@ export function postPokemon(payload) {
 export function pokeDetails (id) {
     return async function (dispatch){
         try{
-            var json = await axios.get("http://localhost:3001/id/" + id);
+            var json = await axios.get("/id/" + id);
+            /* http://localhost:3001 */
             return dispatch({
                 type: "GET_DETAILS",
                 payload: json.data

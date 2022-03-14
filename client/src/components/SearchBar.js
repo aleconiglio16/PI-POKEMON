@@ -24,7 +24,7 @@ function handleButton (e) {
         <div>
             <input
                 type="text"
-                placeholder = "Pokebusqueda"
+                placeholder="Pokebusqueda"
                 onChange= {e => handlePokeName(e)}
                 className={style.searchBox}
             />
