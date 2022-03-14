@@ -142,5 +142,47 @@ module.exports = {
             console.log("error: getIdPokemonDb " + e);
         }
         } 
-    } 
+    },
+    
+    getNameApiPokemon : async (name) => {
+        try{
+        const allNames = await axios.get("https://pokeapi.co/api/v2/pokemon/" + name)
+        const pokeName = [{
+            name: allNames.data.name,
+            id: allNames.data.id,
+            urlImage: allNames.data.sprites.other.home.front_default,
+            types: allNames.data.types.map(e=>e.type.name)
+        } ]
+       
+        return pokeName
+        } catch (e){
+            console.log(e)
+        }
+    },
+
+    getNameDbPokemon : async (name) => {
+        try {
+            const pokemon = await Pokemon.findAll({
+                where: {name},
+                include: {
+                    model: Type,
+                    through: {
+                        attributes: [],
+                    },
+                },
+            });
+            return pokemon.map((e) => ({
+                id: e.id,
+                name: e.name,
+                urlImage: e.image,
+                createInDb: e.createInDb,
+                types: e.types.map(e=> e.name)
+            }));
+        } catch (e) {
+            console.log("error: getNameDbPokemon " + e);
+        }
+    },
+
+
+
 }

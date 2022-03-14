@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const { expect } = require('chai');
 const session = require('supertest-session');
 const app = require('../../src/app.js');
@@ -7,6 +6,7 @@ const { Pokemon, conn } = require('../../src/db.js');
 const agent = session(app);
 const pokemon = {
   name: 'Pikachu',
+ 
 };
 
 describe('Pokemon routes', () => {
@@ -16,9 +16,27 @@ describe('Pokemon routes', () => {
   }));
   beforeEach(() => Pokemon.sync({ force: true })
     .then(() => Pokemon.create(pokemon)));
-  describe('GET /pokemons', () => {
-    it('should get 200', () =>
-      agent.get('/pokemons').expect(200)
-    );
+
+  describe('GET /', () => {
+    it('Mostrar status 200', () => {
+      agent.get('/pokemons')
+      .expect(200)
+      .expect('Content-Type', /json/)
+    })
+  });
+  describe('GET /types', () => {
+    it('Mostrar status 200', () => {
+      agent.get('/types')
+      .expect(200)
+      .expect('Content-Type', /json/)
+    })
+  });
+  describe('POST/ ', () => {
+    it('Mostrar status 200', () => {
+      agent.post('/pokemons')
+      .send(pokemon)
+      .expect(200)
+      .expect('Content-Type', /json/)
+    })
   });
 });

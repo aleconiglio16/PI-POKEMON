@@ -14,7 +14,9 @@ export default function LandingPage() {
                     <img src="https://www.freeiconspng.com/thumbs/pokemon-png/pokemon-png-23.png" alt="fondo"/>
                 
                 </Link>
-                <h1 className={style.title}><strong>INGRESAR</strong></h1>   
+
+                <h1 className={style.title}><strong>INGRESAR</strong></h1>  
+                 
             </div>
         </div>
     )

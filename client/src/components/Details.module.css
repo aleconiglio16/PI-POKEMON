@@ -4,9 +4,8 @@
     align-items: center;
     height: 100vh;
     background-repeat: no-repeat;
-    background-position: right center;
     background-image: url(https://gamersrd.com/wp-content/uploads/2018/01/GamersRD-38.jpg);
-
+    background-size: cover;
 }
 
 .detailsPokemonCard{
@@ -14,41 +13,35 @@
     width: 650px;
     height: 600px;
     border-radius: 10%;
-    box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.637);
+    box-shadow: 12px 12px 15px rgba(0, 0, 0, 0.637);
     background-image: url(https://www.pngkit.com/png/full/268-2685109_being-charismatic-and-popular-professor-oak-often-okido.png);
     background-repeat: no-repeat;
     background-position: right center;
     text-shadow: 0 0 10px rgb(255, 255, 255), 0 0 20px rgb(255, 255, 255), 0 0 30px rgb(255, 255, 255);
-    border:2px solid black
-    
+    border:2px solid black;    
 }
 
 .detailsHeader{
     text-align: center;
-    margin-top: -30px;
-     
-    
+    margin-top: -30px;     
 }
 
 .detailsBodyTop{
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
-   
+    align-items: center;   
 }
 
 .detailsBodyCenter{
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
-    
+    align-items: center;    
 }
 
 .detailsBodyBotton{
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
-  
+    align-items: center;  
 }
 
 .name{
@@ -65,8 +58,7 @@
     background-color: rgb(255, 38, 0) ;
     border-radius: 10%;
     border: 2px solid black;
-    color: white;
-    
+    color: white;    
 }
 
 .image{

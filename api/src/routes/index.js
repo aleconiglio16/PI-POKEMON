@@ -8,12 +8,14 @@ const router = Router();
 const {getApiPokemon, 
        getDbPokemon, 
        pokemonTypes,
-       getPokemonId } = require ("./functions.js")
+       getPokemonId,
+       getNameApiPokemon,
+       getNameDbPokemon } = require ("./functions.js")
        
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-async function totalPokemon () {
+/* async function totalPokemon () {
     try{
         const infoApiPokemon = await getApiPokemon()
         const infoDbPokemon = await getDbPokemon()
@@ -23,17 +25,28 @@ async function totalPokemon () {
         console.log("error: totalPokemon " + e)
     }
 } 
+ */
 
 router.get("/", async (req, res) => {
     const name = req.query.name;
-    try{
-        const pokeData = await totalPokemon()
+    try{        
         if(name) {
-            const pokeName = pokeData.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
-         if(!pokeName) {
-            res.status(404).send("Pokemon no encontrado")
-            }  else res.json(pokeName)
-        } else res.json(pokeData)
+            const pokeName = name.toLowerCase()
+            const nameApi = await getNameApiPokemon(pokeName)
+            if(!nameApi){
+                const nameDb = await getNameDbPokemon(pokeName)
+                if(nameDb){
+                    res.json(nameDb)
+                }   else {
+                    res.status(400)
+                }
+            }   res.json(nameApi)
+            } else {
+                const infoApiPokemon = await getApiPokemon()
+                const infoDbPokemon = await getDbPokemon()
+                const allPokemons = infoApiPokemon.concat(infoDbPokemon);
+                res.json(allPokemons)
+            }
     } catch (e) {
         console.log("error: No se encontro" + e )
     } 
@@ -80,7 +93,6 @@ router.get("/id/:id", async (req, res) => {
     ? res.json(allIds)
     : res.status(404).send("ERROR")
 })
-
 
 
 module.exports = router;

@@ -4,6 +4,7 @@
     height: 35px;
     font-size: 1rem;
     cursor:pointer;
+    box-shadow: 9px 7px 9px rgba(0, 0, 0, 0.637);   
 }
 
 .paginado:hover{

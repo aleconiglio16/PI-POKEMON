@@ -6,17 +6,29 @@ describe('Pokemon model', () => {
     .catch((err) => {
       console.error('Unable to connect to the database:', err);
     }));
+
   describe('Validators', () => {
     beforeEach(() => Pokemon.sync({ force: true }));
+
     describe('name', () => {
-      it('should throw an error if name is null', (done) => {
+      it('arroja un error si el nombre esta vacio', (done) => {
         Pokemon.create({})
-          .then(() => done(new Error('It requires a valid name')))
+          .then(() => done(new Error('Requiere un nombre valido')))
           .catch(() => done());
       });
-      it('should work when its a valid name', () => {
-        Pokemon.create({ name: 'Pikachu' });
+      it('Funciona con un nombre valido', () => {
+        Pokemon.create({ name: 'Black' });
       });
     });
-  });
+    describe('hp', () => {
+      it('arroja un error si el nombre esta vacio', (done) => {
+        Pokemon.create({})
+          .then(() => done(new Error('Requiere un numero valido')))
+          .catch(() => done());
+      });
+      it('Funciona con un numero valido', () => {
+        Pokemon.create({ hp: 10 });
+      });
+    });
+    }); 
 });

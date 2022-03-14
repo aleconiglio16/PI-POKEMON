@@ -6,23 +6,27 @@
 
 .title{
     text-align: center;
+    background-image: url(https://gamersrd.com/wp-content/uploads/2018/01/GamersRD-38.jpg);
+    background-position: top center;
+    border: 2px solid black;
+    
+}
+
+.imgTitle{
     filter: drop-shadow(7px 8px 5px rgba(0, 0, 0, 0.7));
 }
 
 .createReload{
-    text-align: center;
-    
+    text-align: center;    
     justify-content: space-evenly;
-    align-items: center;   
-    
+    align-items: center;       
 }
 
 .search{
     text-align: center;
     position: relative;
     border: none;
-    cursor:pointer;
-    
+    cursor:pointer;    
 }
 
 .filters{
@@ -60,12 +64,12 @@
     font-size: large;
     cursor:pointer;
 }
+
 .selectores:hover{
     background-color: rgb(158, 14, 14);
 }
 
-.crear{
-    
+.crear{    
     border-radius: 10px;
     width: 180px;
     height: 40px;
@@ -78,7 +82,9 @@
     margin-top: 10px;
     font-size: large;
     cursor:pointer;
+    margin-left: 10px;
 }
+
 .crear:hover{
     background-color: rgb(158, 14, 14);
 }
@@ -96,7 +102,23 @@
     margin-top: 10px;
     font-size: large;
     cursor:pointer;
+    margin-right: 10px;
 }
+
 .recargar:hover{
     background-color: rgb(158, 14, 14);
+}
+
+.loading{
+    margin-left: 220px;
+   
+}
+
+.imageLoading{
+    filter: drop-shadow(7px 8px 5px rgba(26, 1, 1, 0.877));
+}
+
+.titleLoading{
+    filter: drop-shadow(4px 3px 6px rgba(26, 1, 1, 0.877));
+   
 }

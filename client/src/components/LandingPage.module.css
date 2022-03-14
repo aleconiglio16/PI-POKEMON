@@ -1,9 +1,10 @@
 .landing{
     text-align: left;
     margin-left: 60px;
-    filter: drop-shadow(7px 8px 5px rgba(247, 243, 243, 0.7));
-    
+    filter: drop-shadow(7px 8px 5px rgba(247, 243, 243, 0.7));    
 }
+
+
 
 .image{
     background-image: url(https://cdn.wallpapersafari.com/24/40/SxvmuD.jpg);
@@ -12,14 +13,11 @@
     background-attachment: fixed;
     background-position: center center;
     min-height: 100vh;
-
 }
 
 .title{
     color: antiquewhite;
     font-family: 'Gill Sans';
     margin-left: 85px;
-    margin-top: -50px;
-    
-    
+    margin-top: -50px;      
 }
