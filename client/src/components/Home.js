@@ -63,6 +63,7 @@ function handleTypesFilter(e) {
     e.preventDefault();
     dispatch(filterTypes(e.target.value))
     setCurrentPage(1);
+    setOrder(e.target.value)
 }
 
 return(

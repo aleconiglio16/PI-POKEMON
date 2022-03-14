@@ -61,7 +61,7 @@ function rootReduceer (state = initialState, action) {
             //lo que hago es preguntar si el action payload es ascendente, que ejecute el primer sort 
             //y que lo ordene de manera ascendente..
             const sortPokemonName = action.payload === "asc"
-            ? state.pokemonCopy.sort(function(a,b) {
+            ? state.pokemon.sort(function(a,b) {
 
             
                 if(a.name > b.name) {
@@ -73,7 +73,7 @@ function rootReduceer (state = initialState, action) {
                 return 0
             }) 
             //si quiero que este ordenado al reves se invierten los valores
-            : state.pokemonCopy.sort(function(a,b) {
+            : state.pokemon.sort(function(a,b) {
                 if(a.name > b.name) {
                     return -1;
                 }
@@ -89,7 +89,7 @@ function rootReduceer (state = initialState, action) {
 
         case "ORDER_BY_ATTACK":
             const sortPokemonAttack = action.payload === "weak"
-            ? state.pokemonCopy.sort(function(a,b){
+            ? state.pokemon.sort(function(a,b){
                 if(a.attack > b.attack) {
                     return 1;
                 }
@@ -98,7 +98,7 @@ function rootReduceer (state = initialState, action) {
                 }
                 return 0
             })
-            : state.pokemonCopy.sort(function(a,b) {
+            : state.pokemon.sort(function(a,b) {
                 if(a.attack > b.attack) {
                     return -1;
                 }
