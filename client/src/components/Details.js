@@ -56,7 +56,7 @@ export default function Details(props) {
             </div > 
                     <div className={styles.return}>
                 <Link to="/home">
-                    <img src="https://cdn.atomix.vg/wp-content/uploads/2013/10/pokeball.png" atl="Boton" width="150px"/>
+                    <img src="https://cdn.atomix.vg/wp-content/uploads/2013/10/pokeball.png" alt="Boton" width="150px"/>
                 </Link>      
                     </div>
                     
