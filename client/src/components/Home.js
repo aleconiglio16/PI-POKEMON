@@ -16,12 +16,12 @@ export default function Home () {
     const allPokemons = useSelector((state) => state.pokemon);
     const typesOfPokemon = useSelector((state) => state.typePokemon)
     const [ currentPage, setCurrentPage ] = useState(1)
-    const [ pokemonPerPage, setPokemonPerPage ] = useState(12)
+    const  pokemonPerPage  = 12;
     const indexOfLastPokemon = currentPage * pokemonPerPage
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonPerPage
     const currentPokemons = allPokemons.slice(indexOfFirstPokemon, indexOfLastPokemon)
 
-    const [ order, setOrder ] = useState("")
+    const [ , setOrder ] = useState("")
 
     const paginado = (pageNumbers) => {
         setCurrentPage(pageNumbers)
